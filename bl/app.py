@@ -17,10 +17,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    _create_program()
-    _create_event()
-    _setup_subscription()
-
     return render_template("index.html")
 
 
@@ -38,7 +34,7 @@ def callbacks():
         return flask.jsonify({"status": "failure", "reason": "Invalid JSON"}), 400
 
 
-def _create_program():
+def _create_program() -> bool:
     with open("program.json", "r") as json_file:
         data = json.load(json_file)
     response = requests.post(
@@ -48,10 +44,13 @@ def _create_program():
     )
     print("Create program, status code:", response.status_code)
     print("Create program, response Body:", response.json())
+    if response.status_code == 201:
+        return True
+    return False
 
 
 def _create_event():
-    with open("event_minimal.json", "r") as json_file:
+    with open("event_capacity_subscription.json", "r") as json_file:
         data = json.load(json_file)
     response = requests.post(
         f"{VTN_URL}/events",
@@ -74,6 +73,40 @@ def _setup_subscription():
     print("Response Body:", response.json())
 
 
+all_reports = {}
+
+def _handle_capacity_report(report):
+    report_id = report["id"]
+    if report_id in all_reports:
+        return
+    all_reports[report_id] = report
+
+    resources = report["resources"]
+    for resource in resources:
+        for interval in resource["intervals"]:
+            for payload in interval["payloads"]:
+                print("Payload:", payload)
+                values = payload["values"]
+                if len(values) == 1:
+                    value = values[0]
+                    _accept_reservation(ven_id=0, value=value)
+                else:
+                    print("Report doesn't have single value in payload, ignoring")
+
+
+def _accept_reservation(ven_id, value):
+    with open("event_capacity_available.json", "r") as json_file:
+        data = json.load(json_file)
+    data["targets"][0]["values"] = [ven_id]
+    response = requests.post(
+        f"{VTN_URL}/events",
+        headers=HEADERS,
+        json=data
+    )
+    print("Accept event, code:", response.status_code)
+    print("Accept event, response Body:", response.json())
+
+
 def poll_service():
     while True:
         try:
@@ -82,7 +115,11 @@ def poll_service():
                 headers=HEADERS,
             )
             if response.status_code == 200:
-                print("Polled service successfully:", response.json())
+                if len(response.json()) > 0:
+                    print("Polled service, got reports", len(response.json()))
+                    for report in response.json():
+                        if report["reportName"] == "capacityReservationReport":
+                            _handle_capacity_report(report)
             else:
                 print("Failed to poll service:", response.status_code)
         except Exception as e:
@@ -92,6 +129,12 @@ def poll_service():
         time.sleep(5)
 
 if __name__ == "__main__":
-    polling_thread = threading.Thread(target=poll_service, daemon=True)
-    polling_thread.start()
+    if _create_program():
+        _create_event()
+        _setup_subscription()
+
+        has_initialized = True
+        polling_thread = threading.Thread(target=poll_service, daemon=True)
+        polling_thread.start()
+
     app.run(port=8081, debug=True)
