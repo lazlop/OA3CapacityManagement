@@ -1,0 +1,14 @@
+{
+	"eventName": "alertEvent",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "0000-00-00"
+	},
+	"intervals": [{
+		"id": 0,
+		"payloads": [{
+			"type": "ALERT_GRID_EMERGENCY",
+			"values": ["The grid is currently under emergency conditions"]
+		}]
+	}]
+}

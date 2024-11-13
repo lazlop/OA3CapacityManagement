@@ -1,0 +1,6 @@
+{
+	"programName": "inverterProgram",
+	"payloadDescriptors": [{
+		"payloadType": "CURVE"
+	}]
+}

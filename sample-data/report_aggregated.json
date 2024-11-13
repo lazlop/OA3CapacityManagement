@@ -1,0 +1,16 @@
+{
+	"reportName": "aggregatedReport",
+	"programID": "44",
+	"eventID": "1",
+	"clientName": "myClient",
+	"resources": [{
+		"resourceName": "AGGREGATED_REPORT",
+		"intervals": [{
+			"id": 0,
+			"payloads": [{
+				"type": "USAGE",
+				"values": [0.012]
+			}]
+		}]
+	}]
+}

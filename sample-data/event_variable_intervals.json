@@ -1,0 +1,27 @@
+{
+	"eventName": "variableIntervalsEvent",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "2023-02-10T00:00:00.000Z",
+		"duration": "PT1H"
+	},
+	"intervals": [{
+			"id": 0,
+			"payloads": [{
+				"type": "PRICE",
+				"values": [0.17]
+			}]
+		},
+		{
+			"id": 1,
+			"intervalPeriod": {
+				"start": "0000-00-00",
+				"duration": "PT2H"
+			},
+			"payloads": [{
+				"type": "PRICE",
+				"values": [0.22]
+			}]
+		}
+	]
+}

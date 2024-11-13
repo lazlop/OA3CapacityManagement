@@ -1,0 +1,24 @@
+{
+	"eventName": "setpoint_Event",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "0000-00-00",
+		"duration": "PT0H"
+	},
+	"reportDescriptors": [{
+		"payloadType": "SETPOINT",
+		"readingType": "DIRECT_READ",
+		"units": "VOLTAGE"
+	}],
+	"payloadDescriptors": [{
+		"payloadType": "CONTROL_SETPOINT",
+		"units": "KWH"
+	}],
+	"intervals": [{
+		"id": 0,
+		"payloads": [{
+			"type": "CONTROL_SETPOINT",
+			"values": [-0.15]
+		}]
+	}]
+}

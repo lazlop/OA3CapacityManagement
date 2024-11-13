@@ -1,0 +1,26 @@
+{
+	"reportName": "setpointReport",
+	"programID": "44",
+	"eventID": "1",
+	"clientName": "myClient",
+	"payloadDescriptors": [{
+		"payloadType": "SETPOINT",
+		"units": "PERCENT"
+	}],
+	"resources": [{
+		"resourceName": "Resource_1",
+		"intervalPeriod": {
+			"start": "2023-02-10T00:00:00.000Z",
+			"duration": "PT1H"
+		},
+		"intervals": [{
+			"id": 0,
+			"payloads": [{
+					"type": "SETPOINT",
+					"values": [0.10]
+				}
+
+			]
+		}]
+	}]
+}

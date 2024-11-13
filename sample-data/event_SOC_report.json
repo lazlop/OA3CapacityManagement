@@ -1,0 +1,28 @@
+{
+	"eventName": "SOC_report_Event",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "0000-00-00",
+		"duration": "PT0H"
+	},
+	"reportDescriptors": [{
+			"payLoadType": "STORAGE_USABLE_CAPACITY"
+		},
+		{
+			"payLoadType": "STORAGE_CHARGE_LEVEL"
+		},
+		{
+			"payLoadType": "STORAGE_MAX_DISCHARGE_POWER"
+		},
+		{
+			"payLoadType": "STORAGE_MAX_CHARGE_POWER"
+		}
+	],
+	"intervals": [{
+		"id": 0,
+		"payloads": [{
+			"type": "REQUIRED_BUT_NOT_USED",
+			"values": [0]
+		}]
+	}]
+}

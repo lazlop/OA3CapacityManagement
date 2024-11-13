@@ -1,0 +1,23 @@
+{
+	"eventName": "inverterEvent",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "0000-00-00",
+		"duration": "PT1H"
+	},
+	"intervals": [{
+		"id": 0,
+		"payloads": [{
+			"type": "CURVE",
+			"values": [{
+					"x": 0.17,
+					"y": 0.26
+				},
+				{
+					"x": 0.19,
+					"y": 0.28
+				}
+			]
+		}]
+	}]
+}

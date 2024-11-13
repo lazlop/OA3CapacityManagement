@@ -1,0 +1,33 @@
+{
+	"eventName": "capability_report_Event",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "0000-00-00",
+		"duration": "P1H"
+	},
+	"reportDescriptors": [{
+			"payloadType": "LOAD_SHED_DELTA_AVAILABLE",
+			"startInterval": 0,
+			"numIntervals": 48,
+			"historical": false,
+			"frequency": 1,
+			"repeat": -1
+		},
+		{
+			"payloadType": "GENERATION_DELTA_AVAILABLE",
+			"startInterval": 0,
+			"numIntervals": 48,
+			"historical": false,
+			"frequency": 1,
+			"repeat": -1
+		}
+	],
+	"intervals": [{
+		"id": 0,
+		"payloads": [{
+			"type": "REQUIRED_BUT_NOT_USED",
+			"values": [0]
+		}]
+	}]
+
+}

@@ -1,0 +1,44 @@
+{
+	"eventName": "pricingEvent",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "2023-02-10T00:00:00.000Z",
+		"duration": "PT1H"
+	},
+	"reportDescriptors": [{
+		"payloadType": "USAGE",
+		"readingType": "DIRECT_READ",
+		"units": "KWH",
+		"startInterval": -1,
+		"numIntervals": -1,
+		"historical": true,
+		"frequency": -1,
+		"repeat": 1
+	}],
+	"payloadDescriptors": [{
+			"payloadType": "PRICE",
+			"units": "KWH",
+			"currency": "USD"
+		}
+	],
+	"intervals": [{
+		"id": 0,
+		"payloads": [{
+				"type": "PRICE",
+				"values": [
+					0.17
+				]
+			}
+		]
+	},
+	{
+		"id": 1,
+		"payloads": [{
+				"type": "PRICE",
+				"values": [
+					0.03
+				]
+			}
+		]
+	}]
+}

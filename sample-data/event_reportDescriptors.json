@@ -1,0 +1,23 @@
+{
+	"eventName": "reportDescriptorsEvent",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "2023-02-10T00:00:00.000Z",
+		"duration": "PT1H"
+	},
+	"reportDescriptors": [{
+		"payLoadType": "USAGE",
+		"readingType": "DIRECT_READ",
+		"aggregate": true
+	}],
+	"intervals": [{
+        "id": 0,
+		"payloads": [{
+				"type": "PRICE",
+				"values": [
+					0.17
+				]
+			}
+		]
+	}]
+}

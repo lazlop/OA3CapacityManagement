@@ -1,0 +1,26 @@
+{
+	"clientName": "myClient",
+	"programID": "44",
+	"objectOperations": [
+      {
+		"callbackUrl": "https://myserver.com/event_callbacks",
+		"operations": [
+			"POST",
+			"PUT"
+		],
+		"objects": [
+			"EVENT"
+		]
+	},
+      {
+		"callbackUrl": "https://myserver.com/program_callbacks",
+		"operations": [
+			"POST",
+			"PUT"
+		],
+		"objects": [
+			"PROGRAM"
+		]
+	}
+    ]
+}

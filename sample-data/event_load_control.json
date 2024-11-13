@@ -1,0 +1,19 @@
+{
+	"eventName": "loadControlEvent",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "0000-00-00",
+		"duration": "PT4H"
+	},
+	"payloadDescriptors": [{
+		"payloadType": "DISPATCH_SETPOINT",
+		"units": "KW"
+	}],
+	"intervals": [{
+		"id": 0,
+		"payloads": [{
+			"type": "DISPATCH_SETPOINT",
+			"values": [0]
+		}]
+	}]
+}

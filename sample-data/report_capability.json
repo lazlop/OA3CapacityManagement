@@ -1,0 +1,32 @@
+{
+	"reportName": "capabilityReport",
+	"programID": "44",
+	"eventID": "1",
+	"clientName": "myClient",
+	"payloadDescriptors": [{
+		"payloadType": "LOAD_SHED_DELTA_AVAILABLE",
+		"units": "KWH"
+	}, {
+		"payloadType": "GENERATION_DELTA_AVAILABLE",
+		"units": "PERCENTAGE"
+	}],
+	"resources": [{
+		"resourceName": "Resource_1",
+		"intervalPeriod": {
+			"start": "2023-02-10T00:00:00.000Z",
+			"duration": "PT1H"
+		},
+		"intervals": [{
+			"id": 0,
+			"payloads": [{
+					"type": "LOAD_SHED_DELTA_AVAILABLE",
+					"values": [30.0]
+				},
+				{
+					"type": "GENERATION_DELTA_AVAILABLE",
+					"values": [110.0]
+				}
+			]
+		}]
+	}]
+}

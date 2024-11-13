@@ -1,0 +1,18 @@
+{
+	"eventName": "simpleEvent",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "0000-00-00",
+		"duration": "P4H"
+	},
+	"payloadDescriptors": [{
+		"payloadType": "SIMPLE"
+	}],
+	"intervals": [{
+		"id": 0,
+		"payloads": [{
+			"type": "SIMPLE",
+			"values": [1]
+		}]
+	}]
+}

@@ -1,0 +1,33 @@
+{
+  "eventName": "payloadDescriptorsEvent",
+  "programID": "44",
+  "intervalPeriod": {
+     "start": "2023-02-10T00:00:00.000Z",
+     "duration": "PT1H"
+  },
+  "payloadDescriptors": [{
+        "payloadType": "PRICE",
+        "units": "KWH",
+        "currency": "USD"
+     },
+     {
+        "payloadType": "GHG"
+     }
+  ],
+  "intervals": [{
+       "id": 0,
+     "payloads": [{
+           "type": "PRICE",
+           "values": [
+              0.17
+           ]
+        },
+        {
+           "type": "GHG",
+           "values": [
+              0.03
+           ]
+        }
+     ]
+  }]
+}

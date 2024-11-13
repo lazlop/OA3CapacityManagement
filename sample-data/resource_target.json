@@ -1,0 +1,7 @@
+{
+	"resourceName": "RESOURCE_0999",
+	"targets": [{
+		"type": "GROUP",
+		"values": ["group1"]
+	}]
+}

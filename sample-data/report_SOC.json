@@ -1,0 +1,46 @@
+{
+	"reportName": "SOCReport",
+	"programID": "44",
+	"eventID": "1",
+	"clientName": "myClient",
+	"resources": [{
+		"resourceName": "Resource_1",
+		"intervalPeriod": {
+			"start": "2023-02-10T00:00:00.000Z",
+			"duration": "PT1H"
+		},
+		"payloadDescriptors": [{
+			"payLoadType": "STORAGE_USABLE_CAPACITY",
+			"units": "KWH"
+		}, {
+			"payLoadType": "STORAGE_CHARGE_LEVEL",
+			"units": "PERCENTAGE"
+		}, {
+			"payLoadType": "STORAGE_MAX_DISCHARGE_POWER",
+			"units": "KWH"
+		}, {
+			"payLoadType": "STORAGE_MAX_CHARGE_POWER",
+			"units": "KWH"
+		}],
+		"intervals": [{
+			"id": 0,
+			"payloads": [{
+					"type": "STORAGE_USABLE_CAPACITY",
+					"values": [0.018]
+				},
+				{
+					"type": "STORAGE_CHARGE_LEVEL",
+					"values": [33]
+				},
+				{
+					"type": "STORAGE_MAX_DISCHARGE_POWER",
+					"values": [0.011]
+				},
+				{
+					"type": "STORAGE_MAX_CHARGE_POWER",
+					"values": [0.007]
+				}
+			]
+		}]
+	}]
+}

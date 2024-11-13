@@ -1,0 +1,19 @@
+{
+	"eventName": "capacity_subscription_Event",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "0000-00-00",
+		"duration": "PT0H"
+	},
+	"payloadDescriptors": [{
+		"payloadType": "CAPACITY_SUBSCRIPTION",
+		"units": "KW"
+	}],
+	"intervals": [{
+		"id": 0,
+		"payloads": [{
+			"type": "CAPACITY_SUBSCRIPTION",
+			"values": [240]
+		}]
+	}]
+}

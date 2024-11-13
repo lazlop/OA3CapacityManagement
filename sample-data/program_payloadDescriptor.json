@@ -1,0 +1,8 @@
+{
+	"programName": "payloadDescriptorProgram",
+	"payloadDescriptors": [{
+		"payloadType": "PRICE",
+		"units": "KWH",
+		"currency": "USD"
+	}]
+}

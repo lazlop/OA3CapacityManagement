@@ -1,0 +1,25 @@
+{
+	"reportName": "DataQualityReport",
+	"programID": "44",
+	"eventID": "1",
+	"clientName": "myClient",
+	"resources": [{
+		"resourceName": "AGGREGATED_REPORT",
+		"intervalPeriod": {
+			"start": "2023-02-10T00:00:00.000Z",
+			"duration": "PT1H"
+		},
+		"intervals": [{
+			"id": 0,
+			"payloads": [{
+					"type": "USAGE",
+					"values": [0.012]
+				},
+				{
+					"type": "DATA_QUALITY",
+					"values": ["MISSING"]
+				}
+			]
+		}]
+	}]
+}

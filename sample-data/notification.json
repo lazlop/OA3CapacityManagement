@@ -1,0 +1,12 @@
+{
+	"objectType": "PROGRAM",
+	"operation": "POST",
+	"object": {
+		"bindingEvents": false,
+		"createdDateTime": "15:51:29",
+		"id": "0",
+		"localPrice": false,
+		"objectType": "PROGRAM",
+		"programName": "myProgram"
+	}
+}
