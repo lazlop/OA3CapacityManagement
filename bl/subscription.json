@@ -1,0 +1,14 @@
+{
+    "clientName": "myClient",
+    "programID": "0",
+    "objectOperations": [{
+        "callbackUrl": "http://host.docker.internal:8081/callbacks",
+        "operations": [
+            "POST",
+            "PUT"
+        ],
+        "objects": [
+            "EVENT"
+        ]
+    }]
+}

@@ -1,0 +1,14 @@
+{
+	"eventName": "minimalEvent",
+	"programID": "0",
+	"intervalPeriod": {
+		"start": "0000-00-00"
+	},
+	"intervals": [{
+		"id": 0,
+		"payloads": [{
+			"type": "PRICE",
+			"values": [0.17]
+		}]
+	}]
+}

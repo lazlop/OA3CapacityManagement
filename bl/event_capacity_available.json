@@ -1,0 +1,41 @@
+{
+	"eventName": "capacity_available_Event",
+	"programID": "0",
+	"intervalPeriod": {
+		"start": "0000-00-00",
+		"duration": "PT0H"
+	},
+	"reportDescriptors": [{
+		"payloadType": "CAPACITY_RESERVATION"
+	}],
+	"payloadDescriptors": [{
+			"payloadType": "CAPACITY_AVAILABLE",
+			"units": "KW"
+		},
+		{
+			"payloadType": "CAPACITY_AVAILABLE_FEE",
+			"units": "USD"
+		}
+	],
+	"intervals": [{
+		"id": 0,
+		"intervalPeriod": {
+			"start": "2023-02-10T00:00:00.000Z",
+			"duration": "PT1H"
+		},
+		"payloads": [{
+				"type": "CAPACITY_AVAILABLE",
+				"values": [242]
+			},
+			{
+				"type": "CAPACITY_AVAILABLE_FEE",
+				"values": [0.11]
+			}
+		]
+	}],
+	"targets": [{
+		"type": "VEN_ID",
+		"values": ["VEN-99"]
+	}]
+
+}
