@@ -1,0 +1,41 @@
+{
+	"eventName": "capacity_reservation_Event",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "0000-00-00",
+		"duration": "PT0H"
+	},
+	"reportDescriptors": [{
+		"payloadType": "CAPACITY_RESERVATION"
+	}],
+	"payloadDescriptors": [{
+			"payloadType": "CAPACITY_RESERVATION",
+			"units": "KW"
+		},
+		{
+			"payloadType": "CAPACITY_RESERVATION_FEE",
+			"units": "USD"
+		}
+	],
+	"intervals": [{
+		"id": 0,
+		"intervalPeriod": {
+			"start": "0000-00-00",
+			"duration": "PT0H"
+		},
+		"payloads": [{
+				"type": "CAPACITY_RESERVATION",
+				"values": [242]
+			},
+			{
+				"type": "CAPACITY_RESERVATION_FEE",
+				"values": [0.11]
+			}
+		]
+	}],
+	"targets": [{
+		"type": "VEN_ID",
+		"values": ["VEN-99"]
+	}]
+
+}

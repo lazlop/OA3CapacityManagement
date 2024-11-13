@@ -1,0 +1,81 @@
+{
+	"eventName": "capacity_limit_Event",
+	"programID": "44",
+	"intervalPeriod": {
+		"start": "2023-02-10T00:00:00.000Z",
+		"duration": "PT30M"
+	},
+	"reportDescriptors": [{
+		"payloadType": "READING",
+		"readingType": "DIRECT_READ",
+		"units": "VOLTS",
+		"startInterval": -1,
+		"numIntervals": -1,
+		"historical": true,
+		"frequency": -1,
+		"repeat": 1
+	}, {
+		"payloadType": "READING",
+		"readingType": "DIRECT_READ",
+		"units": "KW",
+		"startInterval": -1,
+		"numIntervals": -1,
+		"historical": true,
+		"frequency": -1,
+		"repeat": 1
+	}, {
+		"payloadType": "READING",
+		"readingType": "DIRECT_READ",
+		"units": "KVAR",
+		"startInterval": -1,
+		"numIntervals": -1,
+		"historical": true,
+		"frequency": -1,
+		"repeat": 1
+	}],
+	"payloadDescriptors": [{
+			"payloadType": "IMPORT_CAPACITY_LIMIT",
+			"units": "KW"
+		},
+		{
+			"payloadType": "EXPORT_CAPACITY_LIMIT",
+			"units": "KW"
+		}
+	],
+	"intervals": [{
+			"id": 0,
+			"payloads": [{
+					"type": "IMPORT_CAPACITY_LIMIT",
+					"values": [
+						10.0
+					]
+				},
+				{
+					"type": "EXPORT_CAPACITY_LIMIT",
+					"values": [
+						4.0
+					]
+				}
+
+			]
+		},
+		{
+			"id": 1,
+			"payloads": [{
+					"type": "IMPORT_CAPACITY_LIMIT",
+					"values": [
+						8.0
+					]
+
+				},
+				{
+					"type": "EXPORT_CAPACITY_LIMIT",
+					"values": [
+						6.0
+					]
+				}
+
+			]
+		}
+	]
+}
