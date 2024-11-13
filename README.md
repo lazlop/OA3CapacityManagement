@@ -18,6 +18,8 @@ Repo for OA3 hackathon creatign residential EV capacity management implementatio
 # For Simplest demonstration
 
 5kW subscription level, random load shape, 6-hour at 5 kW reservation from a single VEN, VTN will accept or deny randomly 
+
+Using openadr reference VTN 
      
 # AI swimlane diagram
 ```mermaid
