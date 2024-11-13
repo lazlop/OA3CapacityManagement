@@ -14,9 +14,14 @@ Repo for OA3 hackathon creatign residential EV capacity management implementatio
     - Reservation acceepted with no fee, and will say which reservations are given at which interval
     - Reservation rejected, with announcement of cost of capacity at each interval
       - VEN can make another offer with a new request at the fee described, which should be accepted
+
+# For Simplest demonstration
+
+5kW subscription level, random load shape, 6-hour at 5 kW reservation from a single VEN, VTN will accept or deny randomly 
      
 # AI swimlane diagram
-  ---
+```mermaid
+---
 title: OA3CapacityManagement Process
 ---
 
@@ -44,3 +49,4 @@ sequenceDiagram
         VEN->>VTN: Sends new request with adjusted fee
         VTN->>VEN: Accepts new request
     end
+```
