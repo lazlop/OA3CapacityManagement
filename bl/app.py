@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, jsonify
 import flask
 import requests
 import json
@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import threading
 import time
 import pprint
+import random
 
 VTN_URL = "http://localhost:8080/openadr3/3.0.1"
 
@@ -17,14 +18,62 @@ HEADERS = {
 all_reports = {}
 # For each hour in the day, we have 13 kW available
 MAX_HOURLY_CAPACITY = 13
+# MAX_HOURLY_CAPACITY = 6
 # Tracks all the reservations for all resources.
 reservations_by_hour_by_resource = {}
+colors_by_resource = {}
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    cards = []
+    for resource_name, reservations_by_hour in reservations_by_hour_by_resource.items():
+        total_reservations = sum(reservations_by_hour)
+        cards.append({
+            "title": resource_name,
+            "color": colors_by_resource[resource_name],
+            "description": f"Reservations {total_reservations} kW",
+        })
+    return render_template("index.html", cards=cards)
+
+
+@app.route('/chart_data')
+def data():
+    load_data_set = []
+    for resource_name, reservations_by_hour in reservations_by_hour_by_resource.items():
+        data_set = {
+            "label": resource_name,
+            "data": reservations_by_hour,
+            "borderColor": colors_by_resource[resource_name],
+            "fill": False
+        }
+        load_data_set.append(data_set)
+    
+    max_data_set = {
+        "label": "Max Capacity",
+        "data": [MAX_HOURLY_CAPACITY] * 24,
+        "borderColor" : "rgba(0, 0, 0, 1)",
+        "fill": False
+    }
+    load_data_set.append(max_data_set)
+
+    total_reserved_capacity_by_hour = [0] * 24
+    for i in range(24):
+        total_reserved_capacity_by_hour[i] = _get_reserved_capacity_for_hour(i)
+    total_data_set = {
+        "label": "Total Reserved Capacity",
+        "data": total_reserved_capacity_by_hour,
+        "borderColor": "rgba(90, 90, 90, 1)",
+        "fill": False
+    }
+    load_data_set.append(total_data_set)
+
+    chart_data = {
+        "labels": list(range(24)),
+        "datasets": load_data_set,
+    }
+    return jsonify(chart_data)
 
 
 def _create_program() -> bool:
@@ -82,15 +131,25 @@ def _parse_requested_capacity_hours(resource):
 
 
 def _get_available_capacity_for_hour(hour) -> int:
+    return MAX_HOURLY_CAPACITY - _get_reserved_capacity_for_hour(hour)
+
+
+def _get_reserved_capacity_for_hour(hour) -> int:
     reserved_capacity = 0
     for reservations in reservations_by_hour_by_resource.values():
         reserved_capacity += reservations[hour]
-    return MAX_HOURLY_CAPACITY - reserved_capacity
+    return reserved_capacity
+
 
 
 def _apply_capacity_request(resource_name, hours) -> bool:
     if resource_name not in reservations_by_hour_by_resource:
-        reservations_by_hour_by_resource[resource_name] = [0] * 24
+        if resource_name == "Fremont Home":
+            reservations_by_hour_by_resource[resource_name] = [0] * 24
+        else:
+            reservations_by_hour_by_resource[resource_name] = [2] * 24
+        color = f"rgba({random.randint(0,255)}, {random.randint(0,255)}, {random.randint(0,255)}, 1)"
+        colors_by_resource[resource_name] = color
 
     for i in range(24):
         available_capacity = _get_available_capacity_for_hour(i)
@@ -131,7 +190,7 @@ def _handle_capacity_report(report):
         return
     all_reports[report_id] = report
 
-    pprint.pprint(report)
+    # pprint.pprint(report)
     resources = report["resources"]
     for resource in resources:
         # print("Resource:", resource)
@@ -216,7 +275,7 @@ def poll_service():
             )
             if response.status_code == 200:
                 if len(response.json()) > 0:
-                    print("Polled service, got reports", len(response.json()))
+                    # print("Polled service, got reports", len(response.json()))
                     for report in response.json():
                         if report["reportName"] == "capacityReservationReport":
                             _handle_capacity_report(report)
